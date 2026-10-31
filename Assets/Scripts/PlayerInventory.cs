@@ -63,7 +63,20 @@ public class PlayerInventory : MonoBehaviour
 
         for (int i = 0; i < occupiedSlotsCnt; i++)
         {
-            slotsImage[i].sprite = slots[i].icon;
+            bool has = slots[i] != null;
+            slotsImage[i].sprite = has ? slots[i].icon : null;
         }
-    } 
+    }
+
+    public bool Has(ItemData item) => Array.IndexOf(slots, item) != -1;
+
+    public bool Remove(ItemData item)
+    {
+        int idx = Array.IndexOf(slots, item);
+        if (idx == -1) return false;
+
+        slots[idx] = null;
+        UpdateInventory();
+        return true;
+    }
 }
