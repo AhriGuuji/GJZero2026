@@ -1,5 +1,4 @@
 using System.Linq;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,16 +25,21 @@ public class Puzzle : Interactable
 
     public override void TryInteract(Interactor interactor)
     {
+        Debug.Log("DOing it");
         if (IsSolved)
             return; 
 
         puzzleCam.gameObject.SetActive(true);
+
         _currentInteractor = interactor;
         _puzzleInteractor = interactor.GetComponent<PuzzleInteractor>();
         _playerMovement = interactor.GetComponent<Movement>();
+
         _currentInteractor.enabled = false;
         _playerMovement.enabled = false;
         _puzzleInteractor.enabled = true;
+        _puzzleInteractor.SetCamera(puzzleCam);
+
         DoingIt = true;
     }
 
@@ -46,12 +50,17 @@ public class Puzzle : Interactable
         
         if (Keyboard.current.qKey.wasPressedThisFrame)
         {
-            puzzleCam.gameObject.SetActive(false);
-            _currentInteractor.enabled = true;
-            _playerMovement.enabled = true;
-            _puzzleInteractor.enabled = false;
-            DoingIt = false;
+            QuitPuzzle();
         }
+    }
+
+    private void QuitPuzzle()
+    {
+        puzzleCam.gameObject.SetActive(false);
+        _currentInteractor.enabled = true;
+        _playerMovement.enabled = true;
+        _puzzleInteractor.enabled = false;
+        DoingIt = false;
     }
 
     private void VerifyConditions()
@@ -64,6 +73,9 @@ public class Puzzle : Interactable
             {
                 piece.Touch -= VerifyConditions;
             }
+
+            QuitPuzzle();
+            this.enabled = false;
         }
     }
 }
