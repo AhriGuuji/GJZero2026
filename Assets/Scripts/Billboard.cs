@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    private Camera mainCam;
-
-    private void Start()
-    {
-        mainCam = Camera.main;           
-    }
+    [SerializeField]
+    private Camera _mainCamera;
 
     private void LateUpdate()
     {
-        transform.rotation = mainCam.transform.rotation;
+        Vector3 cameraPosition
+            = _mainCamera.transform.position;
+
+        cameraPosition.y
+            = transform.position.y;
+
+        transform.LookAt(cameraPosition);
+
+        transform.Rotate(0f, 180f, 0f);
     }
 }
