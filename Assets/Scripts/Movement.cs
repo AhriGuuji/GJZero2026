@@ -92,9 +92,12 @@ public class Movement : MonoBehaviour
 
         Vector3 localMove = transform.InverseTransformDirection(inputTo3D);
 
-        animator.SetFloat("VelocityX", localMove.x, 0.1f, Time.deltaTime);
-        animator.SetFloat("VelocityZ", localMove.z, 0.1f, Time.deltaTime);
-        animator.SetFloat("MoveMagnitude", inputTo3D.magnitude);
+        if (animator != null)
+        {
+            animator.SetFloat("VelocityX", localMove.x, 0.1f, Time.deltaTime);
+            animator.SetFloat("VelocityZ", localMove.z, 0.1f, Time.deltaTime);
+            animator.SetFloat("MoveMagnitude", inputTo3D.magnitude);
+        }
 
         if (inputTo3D.magnitude >= 0.1f)
         {
