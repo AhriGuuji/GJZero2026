@@ -3,8 +3,13 @@ using System;
 
 public class Piece : MonoBehaviour
 {
-    public bool IsPlaced { get; private set; }
-    private bool _beingUsed;
+    public bool IsPlaced { get; protected set; }
+    protected bool _beingUsed;
+
+    private void Start()
+    {
+        _beingUsed = false;
+    }
 
     public void Use()
     {
@@ -13,7 +18,7 @@ public class Piece : MonoBehaviour
 
     public event Action Touch;
 
-    private void OnTouch()
+    protected void OnTouch()
     {
         Touch?.Invoke();
     }
