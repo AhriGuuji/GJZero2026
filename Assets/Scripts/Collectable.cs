@@ -6,10 +6,18 @@ public class Collectable : Interactable
 
     public override void TryInteract(Interactor interactor)
     {
-        if (interactor.TryGetComponent(out PlayerInventory inventory) && inventory.Add(item))
+        var inventory = interactor.gameObject.GetComponent<PlayerInventory>();
+
+        if (inventory is not null)
         {
+            if (!inventory.Add(item)) return;
+
             OnCollected(interactor);
             Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("Error trying to add collectable");
         }
     }
 
