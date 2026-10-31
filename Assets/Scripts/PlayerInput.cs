@@ -10,8 +10,9 @@ public class PlayerInput : MonoBehaviour
     //private Character character;
     private Movement playerMovement;
     private Interactor interactor;
-    
-    
+    private PlayerInventory playerInventory;
+
+
     public Vector2 MoveInput { get; private set; }
     public bool SprintHeld { get; private set; }
 
@@ -24,7 +25,9 @@ public class PlayerInput : MonoBehaviour
         //character = GetComponent<Character>();
         playerMovement = GetComponent<Movement>();
         interactor = GetComponent<Interactor>();
+        playerInventory = GetComponent<PlayerInventory>();
     }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         // if (!VerifyIfPlayerCanAct()) return;
@@ -32,21 +35,31 @@ public class PlayerInput : MonoBehaviour
         MoveInput = context.ReadValue<Vector2>();
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
+    public void OnInventorySlotChange(InputAction.CallbackContext context)
     {
-        Debug.Log("Entrei porra");
         if (context.phase == InputActionPhase.Performed)
         {
-            interactor.ExecuteInteraction();
+            var keyboard = Keyboard.current;
+            if (keyboard == null) return;
+
+            for (int i = 1; i <= 9; i++)
+            {
+                Key key = (Key)((int)Key.Digit1 + i - 1);
+
+                if (keyboard[key].wasPressedThisFrame)
+                {
+                    playerInventory.UpdateSelected(i - 1);
+                    return;
+                }
+            }
         }
     }
 
-    public void OnCollect(InputAction.CallbackContext context)
+    public void OnInteract(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            // Logic to collect and send to inventory
-            // interactor.Collect(); ??
+            interactor.ExecuteInteraction();
         }
     }
 
