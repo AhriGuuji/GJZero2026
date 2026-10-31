@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +7,8 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private int maxOccupiedInventorySize;
     [SerializeField] private Image[] slotsImage;
+    [SerializeField] private Color unselectedColor;
+    [SerializeField] private Color selectedColor;
 
     private int occupiedSlotsCnt;
     private ItemData[] slots;
@@ -37,14 +38,18 @@ public class PlayerInventory : MonoBehaviour
         return false;
     }
 
-    public void UseSelected() 
+    public void UseItems(ItemData[] items) 
     {
-        
+        foreach (var item in items) Remove(item);
     }
 
-    public void UpdateSelected(KeyCode key)
+    public void UpdateSelected(int idx)
     {
-        return;
+        for (int i = 0; i < slotsImage.Length; i++)
+        {
+            if (idx == i) slotsImage[i].color = selectedColor;
+            else slotsImage[i].color = unselectedColor;
+        }
     }
 
     private ItemData GetSelected(int idx)
@@ -56,9 +61,22 @@ public class PlayerInventory : MonoBehaviour
     {
         occupiedSlotsCnt = slots.Count(x => x != null);
 
-        for (int i = 0; i < occupiedSlotsCnt; i++)
+        for (int i = 0; i < maxOccupiedInventorySize; i++)
         {
-            slotsImage[i].sprite = slots[i].icon;
+            bool has = slots[i] != null;
+            slotsImage[i].sprite = has ? slots[i].icon : null;
         }
-    } 
+    }
+
+    public bool Has(ItemData item) => Array.IndexOf(slots, item) != -1;
+
+    public bool Remove(ItemData item)
+    {
+        int idx = Array.IndexOf(slots, item);
+        if (idx == -1) return false;
+
+        slots[idx] = null;
+        UpdateInventory();
+        return true;
+    }
 }
