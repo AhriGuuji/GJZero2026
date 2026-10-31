@@ -24,7 +24,7 @@ public class ItemLock : Interactable
         }
 
         if (consumeItems)
-            foreach (var item in requiredItems) inventory.Remove(item);
+            inventory.UseItems(requiredItems);
 
         IsSolved = true;
         HidePrompt();
