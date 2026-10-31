@@ -34,6 +34,7 @@ public class PlayerInput : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
+        Debug.Log("Entrei porra");
         if (context.phase == InputActionPhase.Performed)
         {
             interactor.ExecuteInteraction();
