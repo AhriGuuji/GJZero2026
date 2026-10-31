@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +7,8 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private int maxOccupiedInventorySize;
     [SerializeField] private Image[] slotsImage;
+    [SerializeField] private Color unselectedColor;
+    [SerializeField] private Color selectedColor;
 
     private int occupiedSlotsCnt;
     private ItemData[] slots;
@@ -42,9 +43,13 @@ public class PlayerInventory : MonoBehaviour
         
     }
 
-    public void UpdateSelected(KeyCode key)
+    public void UpdateSelected(int idx)
     {
-        return;
+        for (int i = 0; i < slotsImage.Length; i++)
+        {
+            if (idx == i) slotsImage[i].color = selectedColor;
+            else slotsImage[i].color = unselectedColor;
+        }
     }
 
     private ItemData GetSelected(int idx)
