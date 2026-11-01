@@ -4861,9 +4861,8 @@ MonoBehaviour:
   interactionHint: {fileID: 0}
   outline: {fileID: 919132148740676647}
   puzzleCam: {fileID: 1513764367}
-  puzzlePieces: []
-  reward: {fileID: 0}
   objToActivateWhenPuzzleStart: []
+  puzzlePieces: []
   waitForPickup: 1
 --- !u!136 &919132148740676649
 CapsuleCollider:
