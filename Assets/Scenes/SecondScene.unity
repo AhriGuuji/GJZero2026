@@ -3396,6 +3396,10 @@ PrefabInstance:
       propertyPath: m_ColorTemperature
       value: 1500
       objectReference: {fileID: 0}
+    - target: {fileID: 1543110809318890418, guid: 3a47c57ac96d0234cb4014c6be212f8d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d83a5d4ba35a3ed4aa5ea97a34b6385a, type: 2}
     - target: {fileID: 2671918117216395199, guid: 3a47c57ac96d0234cb4014c6be212f8d, type: 3}
       propertyPath: m_Range
       value: 5.44
