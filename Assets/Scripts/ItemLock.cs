@@ -17,10 +17,13 @@ public class ItemLock : Interactable
         var inventory = interactor.gameObject.GetComponent<PlayerInventory>();
         if (inventory == null) return;
 
-        if (!requiredItems.All(inventory.Has))
+        if (requiredItems.Count() != 0)
         {
-            OnFailed();
-            return;
+            if (!requiredItems.All(inventory.Has))
+            {
+                OnFailed();
+                return;
+            }
         }
 
         if (consumeItems)
