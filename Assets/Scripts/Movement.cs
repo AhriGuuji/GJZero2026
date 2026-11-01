@@ -91,8 +91,6 @@ public class Movement : MonoBehaviour
             controller.Move(inputTo3D * moveSpeed * Time.deltaTime);
         }
 
-        Vector3 localMove = transform.InverseTransformDirection(inputTo3D);
-
         UpdateAnimation(moveInput);
 
         if (inputTo3D.magnitude >= 0.1f)
