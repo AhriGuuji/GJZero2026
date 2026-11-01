@@ -16,12 +16,14 @@ public abstract class Interactable : MonoBehaviour
     public virtual void ShowPrompt()
     {
         interactionHint.SetActive(true);
-        outline.enabled = true;
+        if (outline != null)
+            outline.enabled = true;
     }
 
     public virtual void HidePrompt()
     {
         interactionHint.SetActive(false);
-        outline.enabled = false;
+        if (outline != null)
+            outline.enabled = false;
     }
 }
