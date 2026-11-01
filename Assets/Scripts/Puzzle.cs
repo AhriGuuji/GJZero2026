@@ -35,7 +35,10 @@ public class Puzzle : FocusInteractable
     private void VerifyConditions()
     {
         if (IsSolved || !puzzlePieces.All(piece => piece.IsPlaced))
+        {
+            Debug.Log("Is not done");
             return;
+        }
 
         IsSolved = true;
 
