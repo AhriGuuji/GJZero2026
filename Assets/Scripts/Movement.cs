@@ -99,11 +99,11 @@ public class Movement : MonoBehaviour
             if (footstepTimer <= 0f)
             {
                 footstepTimer = footstepInterval;
-                /*if (footstepSounds.Length > 0 && AudioManager.Instance != null)
+                if (footstepSounds.Length > 0 && AudioManager.Instance != null)
                     AudioManager.Instance.PlaySound(
                         footstepSounds[UnityEngine.Random.Range(0, footstepSounds.Length)],
                         UnityEngine.Random.Range(footstepPitchRange.x, footstepPitchRange.y)
-                    );*/
+                    );
             }
         }
         else
