@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: YellowPotion
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: YellowPotion
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 1194fe38d03662d44bff5d8a65472efd, type: 3}
   maxStack: 1
+  focusable: 0
+  focusImage: {fileID: 0}
