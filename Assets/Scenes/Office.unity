@@ -3305,6 +3305,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4098385635713071751, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
+      propertyPath: footstepInterval
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098385635713071751, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
+      propertyPath: footstepPitchRange.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098385635713071751, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
+      propertyPath: footstepPitchRange.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098385635713071751, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
+      propertyPath: footstepSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098385635713071751, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
+      propertyPath: 'footstepSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 3cfcbc2f88a844f4c9a5f9653e874fee, type: 3}
     - target: {fileID: 4433681358338083338, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
       propertyPath: focusImage
       value: 
@@ -3553,6 +3573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DrawerLock
   lockSource: {fileID: 1617469312}
   animator: {fileID: 1207711940}
+  drawerSound: {fileID: 8300000, guid: ace0f5865c2f53343a8ab6c16d181f92, type: 3}
 --- !u!1 &1238058208 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c65958443afe0cc41aa568421dac44b4, type: 3}
@@ -4456,7 +4477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   sceneMusic: {fileID: 8300000, guid: fa3eecc5ad614af4db2df8a712192547, type: 3}
   musicVolume: 0.609
-  sfxVolume: 1
+  sfxVolume: 0.2
 --- !u!4 &1534986934
 Transform:
   m_ObjectHideFlags: 0
