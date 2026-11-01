@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: RedPotion
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: RedPotion
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5795cf8ff08a4ee45a8b2d1b5656bcac, type: 3}
   maxStack: 1
+  focusable: 0
+  focusImage: {fileID: 0}
