@@ -4,10 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField]
-    private UIManager uiHandler;
-
-    //private Character character;
     private Movement playerMovement;
     private Interactor interactor;
     private PlayerInventory playerInventory;
@@ -21,8 +17,6 @@ public class PlayerInput : MonoBehaviour
 
     private void Start()
     {
-        //uiHandler = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
-        //character = GetComponent<Character>();
         playerMovement = GetComponent<Movement>();
         interactor = GetComponent<Interactor>();
         playerInventory = GetComponent<PlayerInventory>();
@@ -30,8 +24,6 @@ public class PlayerInput : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        // if (!VerifyIfPlayerCanAct()) return;
-
         MoveInput = context.ReadValue<Vector2>();
     }
 
@@ -63,5 +55,11 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    //private bool VerifyIfPlayerCanAct() => GameManager.Instance.CanPlayerAct;
+    public void OnTryFocus(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            playerInventory.TryFocus();
+        }
+    }
 }

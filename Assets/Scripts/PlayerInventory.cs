@@ -9,9 +9,12 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Image[] slotsImage;
     [SerializeField] private Color unselectedColor;
     [SerializeField] private Color selectedColor;
+    [SerializeField] private Image focusImage;
 
     private int occupiedSlotsCnt;
     private ItemData[] slots;
+    private bool isFocusing = false;
+
     public event Action<ItemData> ItemAddedmax;
 
     private void Start()
@@ -20,7 +23,7 @@ public class PlayerInventory : MonoBehaviour
         UpdateInventory();
     }
 
-    public bool Add(ItemData item) 
+    public bool Add(ItemData item)
     {
         if (occupiedSlotsCnt < maxOccupiedInventorySize)
         {
@@ -32,13 +35,13 @@ public class PlayerInventory : MonoBehaviour
                 slots[idx] = item;
                 UpdateInventory();
                 return true;
-            } 
+            }
         }
 
         return false;
     }
 
-    public void UseItems(ItemData[] items) 
+    public void UseItems(ItemData[] items)
     {
         foreach (var item in items) Remove(item);
     }
@@ -52,8 +55,13 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    private ItemData GetSelected(int idx)
+    private ItemData GetSelected()
     {
+        for (int i = 0; i < slotsImage.Length; i++)
+        {
+            if (slotsImage[i].color == selectedColor)
+                return slots[i];
+        }
         return null;
     }
 
@@ -64,7 +72,7 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < maxOccupiedInventorySize; i++)
         {
             bool has = slots[i] != null;
-            slotsImage[i].sprite = has ? slots[i].icon : null;  
+            slotsImage[i].sprite = has ? slots[i].icon : null;
         }
     }
 
@@ -78,5 +86,24 @@ public class PlayerInventory : MonoBehaviour
         slots[idx] = null;
         UpdateInventory();
         return true;
+    }
+
+    public void TryFocus()
+    {
+        if (isFocusing)
+        {
+            focusImage.gameObject.SetActive(false);
+            isFocusing = false;
+        }
+        else
+        {
+            var selected = GetSelected();
+            if (selected == null || !selected.focusable) return;
+
+            focusImage.gameObject.SetActive(true);
+            focusImage.sprite = selected.focusImage;
+            isFocusing = true;
+        }
+
     }
 }
