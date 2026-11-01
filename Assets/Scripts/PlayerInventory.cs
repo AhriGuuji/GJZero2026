@@ -64,7 +64,7 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < maxOccupiedInventorySize; i++)
         {
             bool has = slots[i] != null;
-            slotsImage[i].sprite = has ? slots[i].icon : null;
+            slotsImage[i].sprite = has ? slots[i].icon : null;  
         }
     }
 
