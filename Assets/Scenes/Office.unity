@@ -1425,6 +1425,72 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6493981863407711533, guid: b957df42e8e63d14486bc3668411a7fb, type: 3}
   m_PrefabInstance: {fileID: 272942130}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &366289255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 366289256}
+  - component: {fileID: 366289257}
+  - component: {fileID: 366289258}
+  m_Layer: 0
+  m_Name: ChangeSceneCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &366289256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366289255}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.719101, y: 1.605, z: 1.5876}
+  m_LocalScale: {x: 0.94273365, y: 0.9330363, z: 0.9630023}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450651783483654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &366289257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366289255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63787a080fbdff4aa422cddd3d884e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnCollision
+--- !u!65 &366289258
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366289255}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.54894733, y: 1, z: 1.3683728}
+  m_Center: {x: -0.79612887, y: 0, z: -0.6756531}
 --- !u!1001 &371119061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5607,6 +5673,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3745622626505017955}
+  - {fileID: 366289256}
   - {fileID: 4418473096763515821}
   - {fileID: 8448302366211498773}
   m_Father: {fileID: 0}
