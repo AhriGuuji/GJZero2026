@@ -5,7 +5,7 @@ public class Menu : MonoBehaviour
 {
     public void ChangeScene(string sceneName)
     {
-        SceneManagement.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
     public void QuitGame()
