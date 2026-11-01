@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PuzzleReward : MonoBehaviour
+public class FocusReward : MonoBehaviour
 {
-    [SerializeField] private Puzzle puzzle;
+    [SerializeField] private FocusInteractable source; // a Puzzle or a plain FocusInteractable
     [SerializeField] private ItemData item;
     [SerializeField] private PlayerInventory inventory;
     [SerializeField] private Collider pickupCollider;
@@ -11,16 +11,14 @@ public class PuzzleReward : MonoBehaviour
     private bool _unlocked;
 
     private void Awake() => pickupCollider.enabled = false;
-    private void OnEnable() => puzzle.Solved += Unlock;
-    private void OnDisable() => puzzle.Solved -= Unlock;
+    private void OnEnable() => source.Completed += Unlock;
+    private void OnDisable() => source.Completed -= Unlock;
 
-    // Public so an Animation Event at the end of the open animation can call it instead
+    // Public so an Animation Event can call it instead
     public void Unlock()
     {
         _unlocked = true;
         pickupCollider.enabled = true;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
     private void Update()
@@ -28,7 +26,7 @@ public class PuzzleReward : MonoBehaviour
         if (!_unlocked || !Mouse.current.leftButton.wasPressedThisFrame)
             return;
 
-        Ray ray = puzzle.PuzzleCam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray ray = source.FocusCam.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider == pickupCollider)
             Collect();
@@ -38,9 +36,7 @@ public class PuzzleReward : MonoBehaviour
     {
         _unlocked = false;
         inventory.Add(item);
-        puzzle.Finish();              // camera returns to isometric, player regains control
+        source.Finish();
         gameObject.SetActive(false);
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
     }
 }
