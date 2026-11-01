@@ -3,35 +3,41 @@ using UnityEngine.InputSystem;
 
 public class ClockHand : Piece
 {
-    [SerializeField] private Transform center;
+    [SerializeField] private float rotationSpeed = 5.0f;
     [Range(0,360)]
-    [SerializeField] private float zRightValue = 90;
-
+    [SerializeField] private float yRightValue = 90;
+    [SerializeField] private bool isMinuteHand;
+ 
     private void Update()
     {
-        if (_beingUsed)
-        {
-            Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+        HandleInput();
+    }
 
-            Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(
-                new Vector3(mouseScreenPos.x, mouseScreenPos.y, Camera.main.transform.position.z - center.position.z));
-            Vector3 currentDir = (transform.position - center.position);
-            Vector3 mouseDir   = (mouseWorld - center.position);
-            currentDir.x = 0f;
-            mouseDir.x = 0f;
+    private void HandleInput()
+    {
+        float direction = 0f;
 
-            float currentAngle = Mathf.Atan2(currentDir.z, currentDir.y) * Mathf.Rad2Deg;
-            float targetAngle  = Mathf.Atan2(mouseDir.z,   mouseDir.y)   * Mathf.Rad2Deg;
-            float delta        = Mathf.DeltaAngle(currentAngle, targetAngle);
+        if (Keyboard.current.kKey.isPressed)
+            direction = 1f;
 
-            transform.RotateAround(center.position, Vector3.right, delta);
+        if (Keyboard.current.jKey.isPressed)
+            direction = -1f;
 
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                Use();
-                IsPlaced = Mathf.Abs(transform.rotation.eulerAngles.z - zRightValue) < 5f;
-                OnTouch();
-            }
-        }
+        if (direction == 0f)
+            return;
+
+        RotateHands(direction);
+    }
+
+    private void RotateHands(float direction)
+    {
+        float rotationAmount = direction * rotationSpeed * Time.deltaTime;
+
+        if (isMinuteHand) transform.Rotate(0f, -rotationAmount, 0f);
+        else transform.Rotate(0f, -rotationAmount / 12f, 0);
+        Debug.Log("Im " + name + " and my angle is: " + transform.localEulerAngles.y);
+
+        IsPlaced = Mathf.Abs(Mathf.DeltaAngle(transform.localEulerAngles.y, yRightValue)) < 5f;
+        OnTouch();
     }
 }

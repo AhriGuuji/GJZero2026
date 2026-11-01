@@ -6,9 +6,11 @@ public class Puzzle : Interactable
 {
     [SerializeField] private Camera puzzleCam;
     [SerializeField] private Piece[] puzzlePieces;
+    [SerializeField] private ItemData reward;
     private Interactor _currentInteractor;
     private PuzzleInteractor _puzzleInteractor;
     private Movement _playerMovement;
+    private PlayerInventory _playerInventory;
     public bool DoingIt { get; private set; }
     public bool IsSolved { get; private set; }
 
@@ -34,11 +36,17 @@ public class Puzzle : Interactable
         _currentInteractor = interactor;
         _puzzleInteractor = interactor.GetComponent<PuzzleInteractor>();
         _playerMovement = interactor.GetComponent<Movement>();
+        _playerInventory = interactor.GetComponent<PlayerInventory>();
 
         _currentInteractor.enabled = false;
         _playerMovement.enabled = false;
         _puzzleInteractor.enabled = true;
         _puzzleInteractor.SetCamera(puzzleCam);
+
+        foreach (Piece piece in puzzlePieces)
+        {
+            piece.enabled = true;
+        }
 
         DoingIt = true;
     }
@@ -60,6 +68,12 @@ public class Puzzle : Interactable
         _currentInteractor.enabled = true;
         _playerMovement.enabled = true;
         _puzzleInteractor.enabled = false;
+
+        foreach (Piece piece in puzzlePieces)
+        {
+            piece.enabled = false;
+        }
+
         DoingIt = false;
     }
 
@@ -75,6 +89,8 @@ public class Puzzle : Interactable
             }
 
             QuitPuzzle();
+            if (reward != null)
+                _playerInventory.Add(reward);
             this.enabled = false;
         }
     }
