@@ -3097,6 +3097,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4098385635713071751, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
+      propertyPath: footstepSounds.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098385635713071751, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
+      propertyPath: 'footstepSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: d4721cd3a1a742047b3fa41c52f5f50c, type: 3}
     - target: {fileID: 4433681358338083338, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
       propertyPath: slotsImage.Array.size
       value: 4
