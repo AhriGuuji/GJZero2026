@@ -42,11 +42,12 @@ public class Movement : MonoBehaviour
     private bool isDashing = false;*/
     private float verticalVelocity = 0f;
     private float footstepTimer = 0f;
-
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         controller = GetComponent<CharacterController>();
         input = InputSystem.actions.FindAction(inputMoveName);
     }
@@ -92,12 +93,7 @@ public class Movement : MonoBehaviour
 
         Vector3 localMove = transform.InverseTransformDirection(inputTo3D);
 
-        if (animator != null)
-        {
-            animator.SetFloat("VelocityX", localMove.x, 0.1f, Time.deltaTime);
-            animator.SetFloat("VelocityZ", localMove.z, 0.1f, Time.deltaTime);
-            animator.SetFloat("MoveMagnitude", inputTo3D.magnitude);
-        }
+        UpdateAnimation(moveInput);
 
         if (inputTo3D.magnitude >= 0.1f)
         {
@@ -115,6 +111,24 @@ public class Movement : MonoBehaviour
         else
         {
             footstepTimer = 0f;
+        }
+    }
+
+    private void UpdateAnimation(Vector2 moveInput)
+    {
+        if (animator != null)
+        {
+            // Feeds the blend tree: (0,0) = Idle, any direction = Walk
+            animator.SetFloat("XInput", moveInput.x, 0.1f, Time.deltaTime);
+            animator.SetFloat("YInput", moveInput.y, 0.1f, Time.deltaTime);
+        }
+
+        // The Walk clip faces LEFT, so flip only when going right.
+        // When input.x == 0 (moving straight up/down or idle) keep the last facing.
+        if (spriteRenderer != null)
+        {
+            if (moveInput.x > 0.01f) spriteRenderer.flipX = true;
+            else if (moveInput.x < -0.01f) spriteRenderer.flipX = false;
         }
     }
 }
