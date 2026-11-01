@@ -252,7 +252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &54935498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,14 +345,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54935497}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.5474088, z: -0, w: 0.83686537}
+  m_LocalRotation: {x: -0, y: -0.32955357, z: -0, w: 0.94413686}
   m_LocalPosition: {x: 3.432, y: -0.127, z: 0.961}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 521386865}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -66.379, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -38.483, z: 0}
 --- !u!95 &54935501
 Animator:
   serializedVersion: 7
@@ -662,6 +662,7 @@ GameObject:
   - component: {fileID: 142080199}
   - component: {fileID: 142080198}
   - component: {fileID: 142080200}
+  - component: {fileID: 142080201}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -719,6 +720,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraShake
   cam: {fileID: 208840159}
+--- !u!114 &142080201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142080197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ef64ceb0868434db31e6fad0c13b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  sceneMusic: {fileID: 8300000, guid: fa3eecc5ad614af4db2df8a712192547, type: 3}
+  musicVolume: 0.09
+  sfxVolume: 1
 --- !u!1 &151280531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2437,6 +2453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Candle
   lockSource: {fileID: 515801356}
   lightObj: {fileID: 199231364}
+  lightAudio: {fileID: 8300000, guid: cb1f0768b3a80da4081ead9e9603e77b, type: 3}
 --- !u!1 &521386864
 GameObject:
   m_ObjectHideFlags: 0
@@ -3613,6 +3630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Candle
   lockSource: {fileID: 958282700}
   lightObj: {fileID: 1272245131}
+  lightAudio: {fileID: 8300000, guid: cb1f0768b3a80da4081ead9e9603e77b, type: 3}
 --- !u!1001 &981216076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3623,7 +3641,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3956277635648529696, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3499999
+      value: -1.75
       objectReference: {fileID: 0}
     - target: {fileID: 3956277635648529696, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3631,7 +3649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3956277635648529696, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.85
+      value: 3.91
       objectReference: {fileID: 0}
     - target: {fileID: 3956277635648529696, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3663,12 +3681,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4098385635713071751, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
       propertyPath: footstepSounds.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4098385635713071751, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
       propertyPath: 'footstepSounds.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: d4721cd3a1a742047b3fa41c52f5f50c, type: 3}
+      objectReference: {fileID: 8300000, guid: 3cfcbc2f88a844f4c9a5f9653e874fee, type: 3}
+    - target: {fileID: 4098385635713071751, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
+      propertyPath: 'footstepSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 105fcc6d44f04dd47a562757973f4072, type: 3}
     - target: {fileID: 4433681358338083338, guid: bf19e5b7a0852434aa006603322111e9, type: 3}
       propertyPath: slotsImage.Array.size
       value: 4
@@ -3861,6 +3883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Candle
   lockSource: {fileID: 996974003}
   lightObj: {fileID: 1082329144}
+  lightAudio: {fileID: 8300000, guid: cb1f0768b3a80da4081ead9e9603e77b, type: 3}
 --- !u!1001 &1005853099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5909,7 +5932,9 @@ MonoBehaviour:
   interactionHint: {fileID: 454514815}
   outline: {fileID: 1564605709}
   book: {fileID: 1292400481}
+  bookAudio: {fileID: 8300000, guid: f64bba4b44e26db45865d937b118bddc, type: 3}
   impObj: {fileID: 54935497}
+  MagicCircleAudio: {fileID: 8300000, guid: 8b0628280a87fbb47b62109ad3596b60, type: 3}
   timeBeforeImp: 3
 --- !u!65 &1564605711
 BoxCollider:
@@ -6417,6 +6442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Candle
   lockSource: {fileID: 1723499776}
   lightObj: {fileID: 455929208}
+  lightAudio: {fileID: 8300000, guid: cb1f0768b3a80da4081ead9e9603e77b, type: 3}
 --- !u!1 &1727248416
 GameObject:
   m_ObjectHideFlags: 0
@@ -6998,6 +7024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Candle
   lockSource: {fileID: 1903933454}
   lightObj: {fileID: 1128598449}
+  lightAudio: {fileID: 8300000, guid: cb1f0768b3a80da4081ead9e9603e77b, type: 3}
 --- !u!1 &1933501366
 GameObject:
   m_ObjectHideFlags: 0
@@ -9257,6 +9284,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 208840159}
+    - target: {fileID: 5043994291911807630, guid: f82f80ac9138c044a82cf2831e658203, type: 3}
+      propertyPath: collectAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f12605d5a865e84a84d8fba656f46b9, type: 3}
     - target: {fileID: 6967579970627143473, guid: f82f80ac9138c044a82cf2831e658203, type: 3}
       propertyPath: m_Name
       value: PotionYellow
@@ -9410,6 +9441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PotionRed
       objectReference: {fileID: 0}
+    - target: {fileID: 6432545887498424335, guid: bbf8a8d3b94bf064eb5831683f231922, type: 3}
+      propertyPath: collectAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f12605d5a865e84a84d8fba656f46b9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10843,6 +10878,7 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: e41cb3c3884f9a7449f3a5e2d6b50dfa, type: 2}
   inventory: {fileID: 22552604}
   pickupCollider: {fileID: 2128099604}
+  pickupAudio: {fileID: 8300000, guid: cb1f0768b3a80da4081ead9e9603e77b, type: 3}
 --- !u!114 &4651831308781661110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11129,6 +11165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PotionGreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8634377967112624836, guid: 30a6a131c6cfaca4ab60ece50381ec4d, type: 3}
+      propertyPath: collectAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f12605d5a865e84a84d8fba656f46b9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12882,8 +12922,8 @@ SceneRoots:
   - {fileID: 981216076}
   - {fileID: 2134936725}
   - {fileID: 54935500}
-  - {fileID: 314496711}
   - {fileID: 1005853099}
+  - {fileID: 314496711}
   - {fileID: 1564925850}
   - {fileID: 361664269}
   - {fileID: 1593766825}

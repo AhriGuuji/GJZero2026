@@ -3,6 +3,7 @@ using UnityEngine;
 public class Collectable : Interactable
 {
     [SerializeField] private ItemData item;
+    [SerializeField] private AudioClip collectAudio;
 
     public override void TryInteract(Interactor interactor)
     {
@@ -21,5 +22,8 @@ public class Collectable : Interactable
         }
     }
 
-    protected virtual void OnCollected(Interactor who) { /* sound, VFX */ }
+    protected virtual void OnCollected(Interactor who) 
+    {
+        AudioManager.Instance.PlaySound(collectAudio);
+    }
 }

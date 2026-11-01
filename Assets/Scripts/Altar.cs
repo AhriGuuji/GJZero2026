@@ -4,7 +4,9 @@ using System.Collections;
 public class Altar : Interactable
 {
     [SerializeField] private GameObject book;
+    [SerializeField] private AudioClip bookAudio;
     [SerializeField] private GameObject impObj;
+    [SerializeField] private AudioClip MagicCircleAudio;
     [SerializeField] private float timeBeforeImp;
 
     private bool canInteract = false;
@@ -16,6 +18,7 @@ public class Altar : Interactable
         if (canInteract)
         {
             book.SetActive(true);
+            AudioManager.Instance.PlaySound(bookAudio);
 
             StartCoroutine(WaitToFinishGame());
         }
@@ -23,7 +26,10 @@ public class Altar : Interactable
 
     private IEnumerator WaitToFinishGame()
     {
-        CameraShake.Instance.MakeItShake(timeBeforeImp, 3, 1);
+        yield return new WaitForSeconds(bookAudio.length);
+
+        AudioManager.Instance.PlaySound(MagicCircleAudio);
+        CameraShake.Instance.MakeItShake(timeBeforeImp, 1, 1);
 
         yield return new WaitForSeconds(timeBeforeImp);
 

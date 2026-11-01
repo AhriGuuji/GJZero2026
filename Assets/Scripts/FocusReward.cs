@@ -7,6 +7,7 @@ public class FocusReward : MonoBehaviour
     [SerializeField] private ItemData item;
     [SerializeField] private PlayerInventory inventory;
     [SerializeField] private Collider pickupCollider;
+    [SerializeField] private AudioClip pickupAudio;
 
     private bool _unlocked;
 
@@ -34,6 +35,7 @@ public class FocusReward : MonoBehaviour
 
     private void Collect()
     {
+        AudioManager.Instance.PlaySound(pickupAudio);
         _unlocked = false;
         inventory.Add(item);
         source.Finish();
