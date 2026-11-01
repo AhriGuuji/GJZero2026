@@ -23,6 +23,13 @@ public class Caldron : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        CleanCaldron();
+        foreach (PotionPiece potion in orderedPotions)
+            potion.gameObject.SetActive(false);
+    }
+
     private void Update()
     {
         if (Keyboard.current.bKey.wasPressedThisFrame)
