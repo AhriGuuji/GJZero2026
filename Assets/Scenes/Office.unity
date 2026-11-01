@@ -1881,7 +1881,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 33f625fe1b8c1254a8a6045a6a1a2106, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.527
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1889,8 +1889,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 4.8
-  MaxDistance: 9.59
+  MinDistance: 3
+  MaxDistance: 13
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -4455,7 +4455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   sceneMusic: {fileID: 8300000, guid: fa3eecc5ad614af4db2df8a712192547, type: 3}
-  musicVolume: 0.113
+  musicVolume: 0.609
   sfxVolume: 1
 --- !u!4 &1534986934
 Transform:
