@@ -734,7 +734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   sceneMusic: {fileID: 8300000, guid: fa3eecc5ad614af4db2df8a712192547, type: 3}
   musicVolume: 0.09
-  sfxVolume: 1
+  sfxVolume: 0.4
 --- !u!1 &151280531
 GameObject:
   m_ObjectHideFlags: 0
@@ -7751,6 +7751,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2308342161194751169, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308342161194751169, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308342161194751169, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308342161194751169, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292158608254221459, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292158608254221459, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292158608254221459, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292158608254221459, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3478522912066682762, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
       propertyPath: m_Name
       value: GameCanvas
@@ -7839,6 +7871,38 @@ PrefabInstance:
       propertyPath: volume
       value: 
       objectReference: {fileID: 271658908}
+    - target: {fileID: 5580448741381650153, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580448741381650153, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580448741381650153, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580448741381650153, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226161024333426404, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226161024333426404, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226161024333426404, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226161024333426404, guid: 2ab3d142c21e17049b8f7a9c351f7672, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
